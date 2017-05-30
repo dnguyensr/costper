@@ -16,8 +16,8 @@
   <tbody>
     <% @shopping_lists.each do |shopping_list| %>
       <tr>
-        <td><%= shopping_list.store %></td>
-        <td><%= shopping_list.user %></td>
+        <td><%= shopping_list.store.name %></td>
+        <td><%= shopping_list.user.email %></td>
         <td><%= shopping_list.date %></td>
         <td><%= shopping_list.time %></td>
         <td><%= link_to 'Show', shopping_list %></td>

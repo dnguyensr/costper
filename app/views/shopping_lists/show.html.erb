@@ -1,24 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<h3><%= @shopping_list.store.name %></h3>
+
 <p>
-  <strong>Store:</strong>
-  <%= @shopping_list.store %>
+  <strong>Going:</strong>
+  <%= @shopping_list.user.email %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @shopping_list.user %>
+  <strong>On:</strong>
+  <%= @shopping_list.date.strftime("%m/%d/%y") %>
+  <strong>at</strong>
+  <%= @shopping_list.time.strftime("%H:%M %p") %>
 </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @shopping_list.date %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @shopping_list.time %>
-</p>
 
 <%= link_to 'Edit', edit_shopping_list_path(@shopping_list) %> |
 <%= link_to 'Back', shopping_lists_path %>

@@ -1,5 +1,6 @@
 class ShoppingListsController < ApplicationController
   before_action :set_shopping_list, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /shopping_lists
   # GET /shopping_lists.json
@@ -15,17 +16,19 @@ class ShoppingListsController < ApplicationController
   # GET /shopping_lists/new
   def new
     @shopping_list = ShoppingList.new
+    @stores = Store.all
   end
 
   # GET /shopping_lists/1/edit
   def edit
+    @stores = Store.all
   end
 
   # POST /shopping_lists
   # POST /shopping_lists.json
   def create
     @shopping_list = ShoppingList.new(shopping_list_params)
-
+    @shopping_list.user_id = current_user.id
     respond_to do |format|
       if @shopping_list.save
         format.html { redirect_to @shopping_list, notice: 'Shopping list was successfully created.' }

@@ -11,21 +11,19 @@
     </div>
   <% end %>
 
+  <% if @shopping_list.store_id.nil? %>
   <div class="field">
     <%= form.label :store_id %>
-    <%= form.text_field :store_id, id: :shopping_list_store_id %>
+    <%= form.collection_select(:store_id, @stores, :id, :name) %>
   </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :shopping_list_user_id %>
-  </div>
+  <% else %>
+    <h4>Editing Shopping List for <%= @shopping_list.store.name %></h4>
+  <% end %>
 
   <div class="field">
     <%= form.label :date %>
     <%= form.date_select :date, id: :shopping_list_date %>
   </div>
-
   <div class="field">
     <%= form.label :time %>
     <%= form.time_select :time, id: :shopping_list_time %>
