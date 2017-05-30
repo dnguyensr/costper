@@ -19,3 +19,18 @@ end
 stores.each do |store|
   Store.create({ name: store})
 end
+
+ShoppingList.create({
+  user: User.first,
+  store: Store.first,
+  date: Time.now,
+  time: Time.now
+})
+
+Item.create({
+  name: "salad",
+  category: "produce",
+  store: Store.first,
+  regularprice: 3,
+  saleprice: 2
+})
