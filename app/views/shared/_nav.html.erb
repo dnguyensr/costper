@@ -17,6 +17,18 @@
       <li class="nav-item">
         <a class="nav-link" href="/items">Items</a>
       </li>
+      <% if current_user %>
+      <li class="nav-item">
+        <a rel="nofollow" class="nav-link" href="/users/sign_out" data-method="DELETE">Sign Out</a>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/sign_up">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/sign_in">Sign In</a>
+      </li>
+      <% end %>
     </ul>
   </div>
 </nav>
