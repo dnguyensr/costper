@@ -7,13 +7,14 @@ RSpec.describe "stores/index", type: :view do
         :name => "Name"
       ),
       Store.create!(
-        :name => "Name"
+        :name => "Name2"
       )
     ])
   end
 
   it "renders a list of stores" do
     render
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
+    assert_select "tr>td", :text => "Name".to_s, :count => 1
+    assert_select "tr>td", :text => "Name2".to_s, :count => 1
   end
 end
