@@ -2,9 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "shopping_lists/show", type: :view do
   before(:each) do
+    @user = FactoryGirl.create(:user)
+    @store = FactoryGirl.create(:store)
     @shopping_list = assign(:shopping_list, ShoppingList.create!(
-      :store => nil,
-      :user => nil
+      :store => @store,
+      :user => @user,
+      :date => Time.now,
+      :time => Time.now
     ))
   end
 

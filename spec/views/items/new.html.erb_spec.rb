@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "items/new", type: :view do
   before(:each) do
+    @store = FactoryGirl.create(:store)
+    @stores = [@store]
     assign(:item, Item.new(
       :name => "MyString",
       :category => "MyString",
-      :store => nil,
+      :store => @store,
       :regularprice => 1,
       :saleprice => 1
     ))
@@ -20,7 +22,7 @@ RSpec.describe "items/new", type: :view do
 
       assert_select "input[name=?]", "item[category]"
 
-      assert_select "input[name=?]", "item[store_id]"
+      # assert_select "input[name=?]", "item[store_id]"
 
       assert_select "input[name=?]", "item[regularprice]"
 

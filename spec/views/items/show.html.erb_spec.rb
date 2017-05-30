@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "items/show", type: :view do
   before(:each) do
+    @store = FactoryGirl.create(:store)
     @item = assign(:item, Item.create!(
       :name => "Name",
       :category => "Category",
-      :store => nil,
+      :store => @store,
       :regularprice => 2,
       :saleprice => 3
     ))
