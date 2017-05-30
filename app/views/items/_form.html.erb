@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :store_id %>
-    <%= form.text_field :store_id, id: :item_store_id %>
+    <%= form.collection_select(:store_id, @stores, :id, :name) %>
   </div>
 
   <div class="field">
