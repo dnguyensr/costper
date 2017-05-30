@@ -29,11 +29,11 @@ RSpec.describe StoresController, type: :controller do
   # Store. As you add validations to Store, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "store" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,14 +97,14 @@ RSpec.describe StoresController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: "store2" }
       }
 
       it "updates the requested store" do
         store = Store.create! valid_attributes
         put :update, params: {id: store.to_param, store: new_attributes}, session: valid_session
         store.reload
-        skip("Add assertions for updated state")
+        expect(store.name).to eql("store2")
       end
 
       it "redirects to the store" do
