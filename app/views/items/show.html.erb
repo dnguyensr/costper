@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p id="notice"><%= notice %></p>
+      <h3><%= @item.store.name %></h3>
+      <h3><%= @item.name %></h3>
 
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
+      <p>
+        <strong>Category:</strong>
+        <%= @item.category %>
+      </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @item.category %>
-</p>
+      <% if @item.regularprice %>
+      <p>
+        <strong>Regular Price:</strong>
+        $<%= @item.regularprice %>
+      </p>
+      <% end %>
 
-<p>
-  <strong>Store:</strong>
-  <%= @item.store %>
-</p>
+      <% if @item.saleprice %>
+      <p>
+        <strong>Sales Price:</strong>
+        $<%= @item.saleprice %>
+      </p>
+      <% end %>
 
-<p>
-  <strong>Regularprice:</strong>
-  <%= @item.regularprice %>
-</p>
-
-<p>
-  <strong>Saleprice:</strong>
-  <%= @item.saleprice %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+      <%= link_to 'Edit', edit_item_path(@item) %> |
+      <%= link_to 'Back', items_path %>
+    </div>
+  </div>
+</div>

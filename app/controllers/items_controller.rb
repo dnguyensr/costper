@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /items
   # GET /items.json
@@ -15,10 +16,12 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @stores = Store.all
   end
 
   # GET /items/1/edit
   def edit
+    @stores = Store.all
   end
 
   # POST /items
