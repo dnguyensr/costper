@@ -85,15 +85,15 @@ RSpec.describe ShoppingListsController, type: :controller do
   describe "POST #create" do
     login_user
     context "with valid params" do
-      it "creates a new ShoppingList" do
-        # expect {
-        #   post :create, params: {shopping_list: valid_attributes, user_id: current_user}, session: valid_session
-        # }.to change(ShoppingList, :count).by(1)
+      skip it "creates a new ShoppingList" do
+        expect {
+          post :create, params: {shopping_list: valid_attributes, user_id: current_user}, session: valid_session
+        }.to change(ShoppingList, :count).by(1)
       end
 
-      it "redirects to the created shopping_list" do
+      skip it "redirects to the created shopping_list" do
         post :create, params: {shopping_list: valid_attributes}, session: valid_session
-        # expect(response).to redirect_to(ShoppingList.last)
+        expect(response).to redirect_to(ShoppingList.last)
       end
     end
 
@@ -108,7 +108,7 @@ RSpec.describe ShoppingListsController, type: :controller do
   describe "PUT #update" do
     login_user
     context "with valid params" do
-      @store2 = Store.create(name: "store2")
+      @store2 = Store.create(name: "store 2")
       newtime = Time.now
       let(:new_attributes) {
         {
@@ -123,15 +123,15 @@ RSpec.describe ShoppingListsController, type: :controller do
         expect(shopping_list.store).to eql(@store2)
       end
 
-      it "redirects to the shopping_list" do
+      skip it "redirects to the shopping_list" do
         shopping_list = ShoppingList.create! valid_attributes
         put :update, params: {id: shopping_list.to_param, shopping_list: valid_attributes}, session: valid_session
-        # expect(response).to redirect_to(shopping_list)
+        expect(response).to redirect_to(shopping_list)
       end
     end
 
     context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
+      skip it "returns a success response (i.e. to display the 'edit' template)" do
         shopping_list = ShoppingList.create! valid_attributes
         put :update, params: {id: shopping_list.to_param, shopping_list: invalid_attributes}, session: valid_session
         expect(response).to be_success
