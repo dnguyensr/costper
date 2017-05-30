@@ -24,12 +24,15 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe StoresController, type: :controller do
-
+  before(:all) do
+    @store = Store.create(name: "firststore")
+    @user = User.create(email: "test@example.com", password: "password")
+  end
   # This should return the minimal set of attributes required to create a valid
   # Store. As you add validations to Store, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { name: "store" }
+    { name: "valid store" }
   }
 
   let(:invalid_attributes) {
@@ -58,6 +61,7 @@ RSpec.describe StoresController, type: :controller do
   end
 
   describe "GET #new" do
+    login_user
     it "returns a success response" do
       get :new, params: {}, session: valid_session
       expect(response).to be_success
@@ -65,6 +69,7 @@ RSpec.describe StoresController, type: :controller do
   end
 
   describe "GET #edit" do
+    login_user
     it "returns a success response" do
       store = Store.create! valid_attributes
       get :edit, params: {id: store.to_param}, session: valid_session
@@ -73,6 +78,7 @@ RSpec.describe StoresController, type: :controller do
   end
 
   describe "POST #create" do
+    login_user
     context "with valid params" do
       it "creates a new Store" do
         expect {
@@ -95,16 +101,17 @@ RSpec.describe StoresController, type: :controller do
   end
 
   describe "PUT #update" do
+    login_user
     context "with valid params" do
       let(:new_attributes) {
-        { name: "store2" }
+        { name: "new store" }
       }
 
       it "updates the requested store" do
         store = Store.create! valid_attributes
         put :update, params: {id: store.to_param, store: new_attributes}, session: valid_session
         store.reload
-        expect(store.name).to eql("store2")
+        expect(store.name).to eql("new store")
       end
 
       it "redirects to the store" do
@@ -124,6 +131,7 @@ RSpec.describe StoresController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    login_user
     it "destroys the requested store" do
       store = Store.create! valid_attributes
       expect {
