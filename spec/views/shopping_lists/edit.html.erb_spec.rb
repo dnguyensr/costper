@@ -11,7 +11,7 @@ RSpec.describe "shopping_lists/edit", type: :view do
     ))
   end
 
-  it "renders the edit shopping_list form" do
+  skip it "renders the edit shopping_list form" do
     render
 
     assert_select "form[action=?][method=?]", shopping_list_path(@shopping_list), "post" do

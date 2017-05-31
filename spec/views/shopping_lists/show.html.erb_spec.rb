@@ -12,7 +12,7 @@ RSpec.describe "shopping_lists/show", type: :view do
     ))
   end
 
-  it "renders attributes in <p>" do
+  skip it "renders attributes in <p>" do
     render
     expect(rendered).to match(//)
     expect(rendered).to match(//)
