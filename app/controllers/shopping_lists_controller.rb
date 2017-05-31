@@ -15,8 +15,13 @@ class ShoppingListsController < ApplicationController
 
   # GET /shopping_lists/new
   def new
-    @shopping_list = ShoppingList.new
-    @stores = Store.all
+    if current_user && current_user.admin?
+      @shopping_list = ShoppingList.new
+      @stores = Store.all
+    else
+      redirect_to shopping_lists_path, notice: "Permissions are required to add shopping lists"
+    end
+
   end
 
   # GET /shopping_lists/1/edit

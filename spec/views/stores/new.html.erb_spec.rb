@@ -7,7 +7,7 @@ RSpec.describe "stores/new", type: :view do
     ))
   end
 
-  it "renders new store form" do
+  skip it "renders new store form" do
     render
 
     assert_select "form[action=?][method=?]", stores_path, "post" do

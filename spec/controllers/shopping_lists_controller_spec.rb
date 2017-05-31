@@ -87,7 +87,7 @@ RSpec.describe ShoppingListsController, type: :controller do
     context "with valid params" do
       skip it "creates a new ShoppingList" do
         expect {
-          post :create, params: {shopping_list: valid_attributes, user_id: current_user}, session: valid_session
+          post :create, params: {shopping_list: valid_attributes, user_id: @user}, session: valid_session
         }.to change(ShoppingList, :count).by(1)
       end
 
