@@ -19,6 +19,10 @@ class StoresController < ApplicationController
 
   # GET /stores/1/edit
   def edit
+    if current_user && current_user.admin?
+    else
+      redirect_to stores_path, notice: "Editing stores require additional privileges"
+    end
   end
 
   # POST /stores
@@ -54,10 +58,14 @@ class StoresController < ApplicationController
   # DELETE /stores/1
   # DELETE /stores/1.json
   def destroy
-    @store.destroy
-    respond_to do |format|
-      format.html { redirect_to stores_url, notice: 'Store was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user && current_user.admin?
+      @store.destroy
+      respond_to do |format|
+        format.html { redirect_to stores_url, notice: 'Store was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to stores_path, notice: "Removing stores require additional privileges"
     end
   end
 

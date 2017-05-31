@@ -21,8 +21,10 @@
         <td><%= shopping_list.date %></td>
         <td><%= shopping_list.time %></td>
         <td><%= link_to 'Show', shopping_list %></td>
+        <% if current_user.admin? || current_user.approved? %>
         <td><%= link_to 'Edit', edit_shopping_list_path(shopping_list) %></td>
         <td><%= link_to 'Destroy', shopping_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Shopping List', new_shopping_list_path %>
+<%= link_to 'Add Shopping List', new_shopping_list_path, class: "btn btn-info btn-sm active" %>
