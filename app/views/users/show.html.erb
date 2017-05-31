@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <% if current_user.admin? %>
+      <div class="col-md-6 user-profile">
+        <div class="card">
+          <div class="card-block">
+            <div class="card-title">
+            <h3><%= @user.name %></h3>
+            </div>
+            <div class="card-text">
+              <p>Email: <%= @user.email %></p>
+            <% if @user.admin? %>
+              <%= button_to "Remove Admin", toggleadmin_url, method: :put, class:"btn btn-danger" %>
+            <% else %>
+              <%= button_to "Add Admin", toggleadmin_url, method: :put, class:"btn btn-success" %>
+            <% end %>
+            <% if @user.approved? %>
+              <%= button_to "Remove Approved", toggleapproved_url, method: :put, class:"btn btn-danger" %>
+            <% else %>
+              <%= button_to "Add Approved", toggleapproved_url, method: :put, class:"btn btn-success" %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="col-md-6 user-profile">
+        <div class="card">
+          <div class="card-block">
+            <div class="card-title">
+              <h3><%= @user.name %></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

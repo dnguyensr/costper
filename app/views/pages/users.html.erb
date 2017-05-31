@@ -1,42 +1,21 @@
 <div class="container">
   <div class="row">
-    <% if current_user.admin? %>
-      <% @users.each do |user| %>
-        <div class="col-md-6 user-profile">
-          <div class="card">
-            <div class="card-block">
-              <div class="card-title">
-              <h3><%= user.name %></h3>
-              </div>
-              <div class="card-text">
-               <p>Email: <%= user.email %></p>
-              <% if user.admin? %>
-                <button type="button" class="btn btn-success" data-permission="admin">Admin</button>
-              <% else %>
-                <button type="button" class="btn btn-danger" data-permission="admin">Admin</button>
-              <% end %>
-              <% if user.approved? %>
-                <button type="button" class="btn btn-success" data-permission="approved">Approved</button>
-              <% else %>
-                <button type="button" class="btn btn-danger" data-permission="approved">Approved</button>
-              <% end %>
-              </div>
+    <% @users.each do |user| %>
+      <div class="col-md-6 user-profile">
+        <div class="card">
+          <div class="card-block">
+            <div class="card-title">
+            <h3><%= user.name %></h3>
+            </div>
+            <div class="card-text">
+              <p>Email: <%= user.email %></p>
+            <% if current_user.admin? %>
+              <a href="/users/<%= user.id %>" class="btn btn-primary btn-sm active">Edit User Privileges</a>
+            <% end %>
             </div>
           </div>
         </div>
-      <% end %>
-    <% else %>
-      <% @users.each do |user| %>
-        <div class="col-md-6 user-profile">
-          <div class="card">
-            <div class="card-block">
-              <div class="card-title">
-                <h3><%= user.name %></h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
