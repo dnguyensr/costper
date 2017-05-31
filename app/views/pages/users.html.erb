@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <% if current_user.admin? %>
+        <% @users.each do |user| %>
+          <div class="user-container">
+            <h1><%= user.email %></h1>
+            <% if user.admin? %>
+              <button type="button" class="btn btn-success" data-permission="admin">Admin</button>
+            <% else %>
+              <button type="button" class="btn btn-danger" data-permission="admin">Admin</button>
+            <% end %>
+            <% if user.approved? %>
+              <button type="button" class="btn btn-success" data-permission="approved">Approved</button>
+            <% else %>
+              <button type="button" class="btn btn-danger" data-permission="approved">Approved</button>
+            <% end %>
+          </div>
+          <% end %>
+          <% else %>
+        <% @users.each do |user| %>
+          <div class="user-container">
+            <h1><%= user.email %></h1>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 
 users = [
-  {email: "admin@example.com", password: "password", admin: true},
-  {email: "approved@example.com", password: "password", approved: true},
-  {email: "unapproved@example.com", password: "password"}
+  {email: "admin@example.com", name: "admin", password: "password", admin: true},
+  {email: "approved@example.com", name: "Approved User", password: "password", approved: true},
+  {email: "unapproved@example.com", name: "Unapproved User", password: "password"}
 ]
 
 stores = [
