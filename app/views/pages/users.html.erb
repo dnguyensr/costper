@@ -9,7 +9,7 @@
             </div>
             <div class="card-text">
               <p>Email: <%= user.email %></p>
-            <% if current_user.admin? %>
+            <% if current_user && current_user.admin? %>
               <a href="/users/<%= user.id %>" class="btn btn-primary btn-sm active">Edit User Privileges</a>
             <% end %>
             </div>

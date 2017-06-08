@@ -1,19 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @shopping_list.store.name %></h3>
+<div class="container-fluid">
+  <h3 class="text-center"><%= @shopping_list.store.name %></h3>
+  <div>
+    <strong>Shopper:</strong>
+    <%= @shopping_list.user.name %>
+  </div>
 
-<p>
-  <strong>Going:</strong>
-  <%= @shopping_list.user.email %>
-</p>
+  <div>
+    <strong>On:</strong>
+    <%= @shopping_list.date.strftime("%m/%d/%y") %>
+    <strong>at</strong>
+    <%= @shopping_list.time.strftime("%H:%M %p") %>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Sale</th>
+        <th>Add to List</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.category %></td>
+        <td>$<%= item.regularprice %></td>
+        <td>$<%= item.saleprice %></td>
+        <td>Add</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <ul>
+  </ul>
 
-<p>
-  <strong>On:</strong>
-  <%= @shopping_list.date.strftime("%m/%d/%y") %>
-  <strong>at</strong>
-  <%= @shopping_list.time.strftime("%H:%M %p") %>
-</p>
-
-
-<%= link_to 'Edit', edit_shopping_list_path(@shopping_list) %> |
-<%= link_to 'Back', shopping_lists_path %>
+  <div class="show-nav">
+    <%= link_to 'Edit', edit_shopping_list_path(@shopping_list) %> |
+    <%= link_to 'Back', shopping_lists_path %>
+  </div>
+</div>
